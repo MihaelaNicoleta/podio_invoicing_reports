@@ -12,19 +12,19 @@
                                     ));
 		}
 		catch(PodioError $e) {
-			print "<p class='error'>There was an error. The API responded with the error type <b>{$e->body['error']}</b> and the message <b>{$e->body['error_description']}. <a href='".$_SERVER[REQUEST_URI]."'>Retry</a></p>";
+			global $redirect_uri;
+			print "<p class='error'>There was an error. The API responded with the error type <b>{$e->body['error']}</b> and the message <b>{$e->body['error_description']}. <a href='".$redirect_uri."'>Retry</a></p>";
 		}
 		
 		return $item_collection;
-
 	}
 
 	function check_invoiced($fields = array()) {
-		$invoiced = true;
+		$invoiced = false;
 		foreach($fields as $field) {
 			if($field->external_id == 'invoice-status' && $field->field_id == '71430604') {
-				if($field->values[0]['id'] != 2) {
-					$invoiced = false;
+				if($field->values[0]['id'] == 2) {
+					$invoiced = true;
 				}
 			}
 		}
@@ -37,17 +37,14 @@
 
 		$invoiced_hours = 0;
 		$not_invoiced_hours = 0;
-		$item_ids = array();
-		$app_item_ids = array();
 
 		$item_collection = get_all_app_items($app_id);
-
 		if($item_collection == null)
 			return 0;
 		
 		foreach ($item_collection as $item) {
-			$item_ids[] = $item->item_id;
-			$app_item_ids[] = $item->app_item_id;
+			/*$item_ids[] = $item->item_id;
+			$app_item_ids[] = $item->app_item_id;*/
 
 			$fields = $item->fields;
 			if($fields) {
@@ -62,9 +59,7 @@
                             $invoiced_hours += $field->values;
                         }
 					}
-
 				}
-
 			}
 		}
 
@@ -76,7 +71,6 @@
             "invoiced_hours" => $invoiced_hours,
             "total" => ($invoiced_hours + $not_invoiced_hours)
 		);
-
 	}
     
     function get_app_id($name = "") {
