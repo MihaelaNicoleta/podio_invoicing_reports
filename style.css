@@ -1,5 +1,7 @@
+html {
+	background-color: #e6e6e6;
+}
 body {
-    background-color: #e6e6e6;
 	font-family: 'Source Sans Pro', sans-serif;
 	font-size: 18px;
 	color: #000000;
@@ -41,21 +43,12 @@ a:hover {
 	border-radius: 25px;
 	text-align: center;
 	text-shadow: 1px 1px #d9d9d9;
-	color: ffffff;
+	color: #ffffff;
 }
 
 a.button {
 	padding: 10px 75px;
 	line-height: 50px; 
-}
-
-input {
-	border: none;
-	outline: none;
-	padding: 10px 57px;
-	line-height: 18px;
-	font-family: 'Source Sans Pro', sans-serif;
-	font-size: 18px;
 }
 
 select {
@@ -72,7 +65,7 @@ select {
 }
 
 #results {
-	background-color: ffffff;
+	background-color: #ffffff;
 	padding: 15px;
 	border: 2px outset #d9d9d9;
 	margin: 25px auto;
