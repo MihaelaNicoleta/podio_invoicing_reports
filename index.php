@@ -46,9 +46,9 @@
     ?>
 	
 	<div id="content">
-		<p>Select workspace</p>
 		<form id="workspaces" method="GET" action="">
 			<select id="workspace" name="workspace">
+				<option value="0">SELECT WORKSPACE</option>               
 				<?php
 					foreach($workspaces as $app_short_name => $app_name) { ?>
 						<option value="<?php echo $app_short_name; ?>" <?php echo ($app_short_name == $_GET['workspace']) ? selected : '';?>><?php echo $app_name;?></option>               
