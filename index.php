@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<meta charset="UTF-8">
 		<title>Podio Report</title>
 		<link rel="stylesheet" type="text/css" href="style.css">
 		<link href='https://fonts.googleapis.com/css?family=Comfortaa|Source+Sans+Pro' rel='stylesheet' type='text/css'>
@@ -86,7 +87,7 @@
 		</div>
     </body>
 	
-	<script type='text/javascript'>
+	<script type="text/javascript">
 		$(document).ready(function() {
 			$('select#workspace').on('change', function() {			
 				$('form#workspaces').submit();			
