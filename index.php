@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 	<head>
 		<title>Podio Report</title>
@@ -71,11 +72,13 @@
 									<p>Not invoiced hours:  <?php echo !empty($total_hours['not_invoiced_hours']) ? $total_hours['not_invoiced_hours'] : 0;?></p>
 									<p>Invoiced hours:  <?php echo !empty($total_hours['invoiced_hours']) ? $total_hours['invoiced_hours'] : 0;?></p>
 								</div>
-					</div>
 
 		<?php
 							}
 						}
+		?>
+					</div>
+		<?php
 				}
 
 			}
