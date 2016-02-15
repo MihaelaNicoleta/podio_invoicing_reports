@@ -14,8 +14,8 @@ $workspaces = array(
 
 //app_id - integer, not string
 $app_ids = array(
-                'app1' => app_id1,
-                'app2' => app_id2,
-                'app3' => app_id3
+                'app1' => 'app_id1',
+                'app2' => 'app_id2',
+                'app3' => 'app_id3'
             );
 
