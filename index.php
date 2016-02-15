@@ -4,7 +4,8 @@
 		<meta charset="UTF-8">
 		<title>Podio Report</title>
 		<link rel="stylesheet" type="text/css" href="style.css">
-		<link href='https://fonts.googleapis.com/css?family=Comfortaa|Source+Sans+Pro' rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 	</head>
 	<body>
@@ -50,7 +51,7 @@
 		?>
 
 					<div id="content">
-						<form id="workspaces" method="GET" action="">
+						<form id="workspaces" method="GET">
 							<select id="workspace" name="workspace">
 								<option value="0">SELECT WORKSPACE</option>
 								<?php
@@ -85,16 +86,15 @@
 			}
 		?>
 		</div>
-    </body>
-	
-	<script type="text/javascript">
-		$(document).ready(function() {
-			$('select#workspace').on('change', function() {			
-				$('form#workspaces').submit();			
+
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$('select#workspace').on('change', function() {
+					$('form#workspaces').submit();
+				});
 			});
-		});
-		
-	</script>
-	
+
+		</script>
+    </body>
 </html>
 
