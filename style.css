@@ -79,3 +79,7 @@ select {
 	width: 45%;
 	font-style: italic;
 }
+
+.error {
+	color: red;
+}

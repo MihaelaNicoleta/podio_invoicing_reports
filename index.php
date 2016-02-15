@@ -32,11 +32,16 @@
     }
     elseif (isset($_GET['code']) || $api->is_authenticated()) {
     if (isset($_GET['error'])) {
-        print "There was a problem. The server said: {$_GET['error_description']}";
+        print "<p class='error'>There was a problem. The server said: {$_GET['error_description']}</p>";
     }
     else {
     if(isset($_GET['code'])) {
-        $api->authenticate('authorization_code', array('code' => $_GET['code'], 'redirect_uri' => $redirect_uri));
+		try {
+			$api->authenticate('authorization_code', array('code' => $_GET['code'], 'redirect_uri' => $redirect_uri));
+		}
+		catch(PodioError $e) {
+			print "<p class='error'>There was an error. The API responded with the error type <b>{$e->body['error']}</b> and the message <b>{$e->body['error_description']}. <a href='".$_SERVER[REQUEST_URI]."'>Retry</a></p>";
+		}
     }
     ?>
 	
@@ -55,16 +60,18 @@
             $workspace = $_GET['workspace'];
             if($workspace) {
                 $app_id = get_app_id($workspace);
-                $total_hours = get_total_hours($app_id);
+				$total_hours = get_total_hours($app_id);
+				if($total_hours) {
         ?>
 
-            <div id="results">
-                <p>Total hours: <?php echo !empty($total_hours['total']) ? $total_hours['total'] : 0;?></p>                
-                <p>Not invoiced hours:  <?php echo !empty($total_hours['not_invoiced_hours']) ? $total_hours['not_invoiced_hours'] : 0;?></p>                
-                <p>Invoiced hours:  <?php echo !empty($total_hours['invoiced_hours']) ? $total_hours['invoiced_hours'] : 0;?></p>
-            </div>
-	</div>
+					<div id="results">
+						<p>Total hours: <?php echo !empty($total_hours['total']) ? $total_hours['total'] : 0;?></p>                
+						<p>Not invoiced hours:  <?php echo !empty($total_hours['not_invoiced_hours']) ? $total_hours['not_invoiced_hours'] : 0;?></p>                
+						<p>Invoiced hours:  <?php echo !empty($total_hours['invoiced_hours']) ? $total_hours['invoiced_hours'] : 0;?></p>
+					</div>
+			</div>
             <?php
+				}
             }
     }
 

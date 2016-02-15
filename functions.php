@@ -3,11 +3,19 @@
 	function get_all_app_items($app_id = 0, $offset = 0, $limit = 500) {
 		if($app_id == 0)
 			return false;
-
-		return PodioItem::filter($app_id, array(
+		
+		$item_collection = 0;
+		try {
+			$item_collection = PodioItem::filter($app_id, array(
                                     'limit' => $limit,
                                     'offset' => $offset
                                     ));
+		}
+		catch(PodioError $e) {
+			print "<p class='error'>There was an error. The API responded with the error type <b>{$e->body['error']}</b> and the message <b>{$e->body['error_description']}. <a href='".$_SERVER[REQUEST_URI]."'>Retry</a></p>";
+		}
+		
+		return $item_collection;
 
 	}
 
@@ -34,6 +42,9 @@
 
 		$item_collection = get_all_app_items($app_id);
 
+		if($item_collection == null)
+			return 0;
+		
 		foreach ($item_collection as $item) {
 			$item_ids[] = $item->item_id;
 			$app_item_ids[] = $item->app_item_id;
@@ -70,7 +81,7 @@
     
     function get_app_id($name = "") {
         if($name == null)
-            return false;
+            return 0;
         
         global $app_ids;
         foreach($app_ids as $app_name => $app_id) {
@@ -78,5 +89,5 @@
                 return $app_id;
             }
         }
-        return false;
+        return 0;
     }
