@@ -14,7 +14,7 @@ h1 {
 }
 
 a {
-	text-decoration: none;	
+	text-decoration: none;
 }
 
 a:hover {
@@ -22,18 +22,19 @@ a:hover {
 }
 
 #wrapper {
-	width: 800px;
+	/*width: 800px;*/
+	width: 100%;
 	margin: 0 auto;
-	
+
 }
 
 #content {
 	margin: 0 auto;
-	text-align:center;
+	/*text-align:center;*/
 }
 
 .title {
-	text-align: center;	
+	text-align: center;
 	margin-top: 80px;
 	margin-bottom: 40px;
 }
@@ -48,7 +49,7 @@ a:hover {
 
 a.button {
 	padding: 10px 75px;
-	line-height: 50px; 
+	line-height: 50px;
 }
 
 select {
@@ -64,13 +65,19 @@ select {
 	margin-bottom: 35px;
 }
 
-#results {
+.results {
 	background-color: #ffffff;
-	padding: 15px;
+    padding: 10px 15px;
 	border: 2px outset #d9d9d9;
-	margin: 25px auto;
-	width: 45%;
-	font-style: italic;
+	margin: 15px;
+	width: 240px;
+    height: 200px;
+    float: left;
+}
+
+.results h2 {
+    text-align: center;
+    background-color: #55a6f6;
 }
 
 .error {
