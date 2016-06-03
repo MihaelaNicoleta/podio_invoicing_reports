@@ -28,9 +28,10 @@
 			if (!isset($_GET['code']) && !$api->is_authenticated()) {
 				$auth_url = htmlentities('https://podio.com/oauth/authorize?response_type=code&client_id='.$client_id.'&redirect_uri='.rawurlencode($redirect_uri)."&scope=".rawurlencode($scope));
 		?>
-
-				<p>You need to authenticate on Podio</p>
-				<a href="<?php echo $auth_url; ?>" class="button">Login</a>
+                <div id="login_body">
+                    <p>You need to authenticate on Podio</p>
+                    <a href="<?php echo $auth_url; ?>" class="button">Login</a>
+                </div>
 
 		<?php
 			}

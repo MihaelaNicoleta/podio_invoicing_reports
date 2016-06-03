@@ -22,15 +22,13 @@ a:hover {
 }
 
 #wrapper {
-	/*width: 800px;*/
 	width: 100%;
 	margin: 0 auto;
 
 }
 
 #content {
-	margin: 0 auto;
-	/*text-align:center;*/
+    margin: 0 60px;
 }
 
 .title {
@@ -78,6 +76,10 @@ select {
 .results h2 {
     text-align: center;
     background-color: #55a6f6;
+}
+
+#login_body {
+    text-align: center;
 }
 
 .error {
