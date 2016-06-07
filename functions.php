@@ -43,11 +43,14 @@
 			return 0;
 
 		foreach ($item_collection as $item) {
-			/*$item_ids[] = $item->item_id;
-			$app_item_ids[] = $item->app_item_id;*/
 
-			$fields = $item->fields;
-			if($fields) {
+//			$fields = $item->fields;
+
+            $fields = array();
+            $fields[] = $item->fields["time-spent"];
+            $fields[] = $item->fields["invoice-status"];
+
+            if($fields) {
 				$invoiced = check_invoiced($fields);
 
 				foreach($fields as $field) {
