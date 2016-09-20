@@ -39,7 +39,7 @@
 					echo "<p class='error'>There was a problem. The server said: {$_GET['error_description']}</p>";
 				}
 				else {
-					if(isset($_GET['code'])) {
+					if(isset($_GET['code']) && !$api->is_authenticated()) {
 						try {
 							$api->authenticate('authorization_code', array('code' => $_GET['code'], 'redirect_uri' => $redirect_uri));
 						}
